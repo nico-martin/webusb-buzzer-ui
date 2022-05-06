@@ -1,11 +1,12 @@
-const fs = require('fs');
+require('dotenv').config();
 
+const fs = require('fs');
 const server = require('./server');
 
 const serverInstance = server({
   port: 8643,
-  sslKey: fs.readFileSync('C:/MAMP/htdocs/_ssh/localhost/localhost.key'),
-  sslCert: fs.readFileSync('C:/MAMP/htdocs/_ssh/localhost/localhost.crt'),
+  sslKey: fs.readFileSync(process.env.SSL_KEY),
+  sslCert: fs.readFileSync(process.env.SSL_CRT),
 });
 
 serverInstance.start();
