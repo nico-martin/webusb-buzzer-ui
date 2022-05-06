@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "noEmit": false,
+    "module": "system",
+    "target": "es5",
+    "outDir": "./public/js",
+    "outFile": "./public/build.js",
+    "rootDir": "./src",
+    "moduleResolution": "node",
+    //"strict": true,
+    "strictNullChecks": false,
+    "esModuleInterop": true
+  },
+  "exclude": [
+    "node_modules",
+    "server",
+    "public"
+  ]
+}
