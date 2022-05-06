@@ -8,6 +8,8 @@ It was developed using only typescript and no other build steps or frameworks.
 The core of this sample application is a JavaScript class that abstracts the WebUSB API and concentrates it on a handful of methods:
 
 ```JavaScript
+// ./src/WebUSBController.ts
+
 const Controller = new WebUSBController();
 
 // Connect to a device, accepts USBDeviceRequestOptions as a parameter
