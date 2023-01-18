@@ -1,19 +1,21 @@
 {
   "compilerOptions": {
     "noEmit": false,
-    "module": "system",
+    "module": "es6",
     "target": "es5",
-    "outDir": "./public/js",
-    "outFile": "./public/build.js",
-    "rootDir": "./src",
+    "outDir": "./dist/",
+    "rootDir": "./src/",
     "moduleResolution": "node",
-    //"strict": true,
     "strictNullChecks": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "skipLibCheck": true
   },
   "exclude": [
-    "node_modules",
-    "server",
-    "public"
+    "**/node_modules",
+    "**/dist"
   ]
 }

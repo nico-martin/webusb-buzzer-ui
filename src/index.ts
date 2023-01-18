@@ -1,8 +1,11 @@
-import WebUSBController from './WebUSBController';
+import WebUSBController from '@nico-martin/webusb-controller';
+
+import './css/reset.css';
+import './css/styles.css';
 
 (function () {
   document.addEventListener('DOMContentLoaded', (event) => {
-    const Controller = new WebUSBController();
+    const Controller = new WebUSBController(true, false);
     const textDecoder = new TextDecoder('utf-8');
     const $connectArea =
       document.querySelector<HTMLDivElement>('#connect-area');
@@ -11,14 +14,6 @@ import WebUSBController from './WebUSBController';
     const $connectButtonSkip =
       document.querySelector<HTMLButtonElement>('#connect-skip');
     const $status = document.querySelector<HTMLButtonElement>('#status');
-
-    /**
-     * Methods
-     */
-
-    /**
-     * Setup
-     */
 
     $connectButton.addEventListener('click', async () => {
       await Controller.connect({ filters: [{ vendorId: 0x2e8a }] });
@@ -34,12 +29,11 @@ import WebUSBController from './WebUSBController';
       } else if (data.byteLength === 1) {
         $status.innerText = 'NOT PRESSED';
       } else {
-        console.log('received', { data, decoded: data.getInt8(0) });
+        console.log('received', { data, decoded: textDecoder.decode(data) });
       }
     });
 
     Controller.onDeviceConnect((device) => {
-      console.log({ device });
       if (device) {
         $connectArea.style.display = 'none';
       } else {
